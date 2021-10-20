@@ -6,43 +6,74 @@
   <meta name="author" content="Diego Luiz">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css">    
   <script src="js/app.js" defer></script>  
   <title>Frontend Mentor | Todo app</title>
 </head>
 <body>
   <header class="top-header container">
-    <h1 class="logo">Todo</h1>
-    <button class="theme-btn">
+    <h1 class="logo">To do</h1>
+    <button class="theme-btn default-btn">
       <span class="sr-only">Change to light theme</span>
       <img src="images/icon-sun.svg" alt="" aria-hidden="true">
     </button>
   </header>
   <main>
     <ul class="todo-list container">
-      <li class="list__item --all-bdradius">
-        <input type="text" placeholder="Create a new todo..." class="todo-list__input">
+      <li class="list__item --all-bdradius --justify-center">
+        <span class="gradient-checkbox" aria-hidden="true"></span>
+        <input type="text" placeholder="Create a new todo..." class="todo-list__input --input-newtodo">
       </li>
       <li class="list__item --top-bdradius --bd-bottom">
         <input type="checkbox" value="Complete online Javascript course" id="1" class="todo-list__input">
+        <span class="gradient-checkbox" aria-hidden="true"></span>
         <label for="1" class="todo-list__label">Complete online Javascript course</label>
-        <button class="delete-todo-btn" type="button">
+        <button class="delete-todo-btn default-btn" type="button">
           <span class="sr-only">Delete this to do</span>
           <img src="images/icon-cross.svg" alt="" aria-hidden="true">
         </button>
       </li>
       <li class="list__item --bd-bottom">
         <input type="checkbox" value="Complete online Javascript course" id="2" class="todo-list__input">
+        <span class="gradient-checkbox" aria-hidden="true"></span>
         <label for="2" class="todo-list__label">Complete online Javascript course</label>
-        <button class="delete-todo-btn" type="button">
+        <button class="delete-todo-btn default-btn" type="button">
           <span class="sr-only">Delete this to do</span>
           <img src="images/icon-cross.svg" alt="" aria-hidden="true">
         </button>
       </li>
       <li class="list__item --bd-bottom">
         <input type="checkbox" value="Complete online Javascript course" id="3" class="todo-list__input">
+        <span class="gradient-checkbox" aria-hidden="true"></span>
         <label for="3" class="todo-list__label">Complete online Javascript course</label>
-        <button class="delete-todo-btn" type="button">
+        <button class="delete-todo-btn default-btn" type="button">
+          <span class="sr-only">Delete this to do</span>
+          <img src="images/icon-cross.svg" alt="" aria-hidden="true">
+        </button>
+      </li>
+      <li class="list__item --bd-bottom">
+        <input type="checkbox" value="Complete online Javascript course" id="4" class="todo-list__input">
+        <span class="gradient-checkbox" aria-hidden="true"></span>
+        <label for="4" class="todo-list__label">Complete online Javascript course</label>
+        <button class="delete-todo-btn default-btn" type="button">
+          <span class="sr-only">Delete this to do</span>
+          <img src="images/icon-cross.svg" alt="" aria-hidden="true">
+        </button>
+      </li>
+      <li class="list__item --bd-bottom">
+        <input type="checkbox" value="Complete online Javascript course" id="5" class="todo-list__input">
+        <span class="gradient-checkbox" aria-hidden="true"></span>
+        <label for="5" class="todo-list__label">Complete online Javascript course</label>
+        <button class="delete-todo-btn default-btn" type="button">
+          <span class="sr-only">Delete this to do</span>
+          <img src="images/icon-cross.svg" alt="" aria-hidden="true">
+        </button>
+      </li>
+      <li class="list__item --bd-bottom">
+        <input type="checkbox" value="Complete online Javascript course" id="6" class="todo-list__input">
+        <span class="gradient-checkbox" aria-hidden="true"></span>
+        <label for="6" class="todo-list__label">Complete online Javascript course</label>
+        <button class="delete-todo-btn default-btn" type="button">
           <span class="sr-only">Delete this to do</span>
           <img src="images/icon-cross.svg" alt="" aria-hidden="true">
         </button>
@@ -52,11 +83,16 @@
           <input type="number" id="items-left" value="1" readonly>
           <label for="items-left">items left</label>
         </p>
-        <button type="button" >Clear Completed</button>
+        <button type="button" class="default-btn">Clear Completed</button>
+      </li>
+      <li class="list__item --all-bdradius --justify-center">
+        <button type="button" class="default-btn filter-btn active">All</button>
+        <button type="button" class="default-btn filter-btn">Active</button>
+        <button type="button" class="default-btn filter-btn">Completed</button>
       </li>
     </ul>
       
-    </form>
+    
   </main>
   <!-- <footer>
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 

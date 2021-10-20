@@ -15,7 +15,7 @@
     --light-grayish-blue-hover-clr: hsl(236, 33%, 92%);
     --dark-grayish-blue-clr: hsl(234, 11%, 52%);
     --very-dark-grayish-blue-clr: hsl(233, 14%, 35%);
-    --very-dark-grayish-blue-clr: hsl(237, 14%, 26%);
+    --very-darker-grayish-blue-clr: hsl(237, 14%, 26%);
 }
 
 body{
@@ -28,6 +28,11 @@ h1,h2{
     margin: 0;
 }
 img{ max-width: 100%; }
+input[type=checkbox].todo-list__input{ 
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
 .sr-only {
     position: absolute;
     left: -10000px;
@@ -36,7 +41,15 @@ img{ max-width: 100%; }
     height: 1px;
     overflow: hidden;
 }
-.container{ padding: 2.5em 1.25em; }
+.container{ padding: 2.25em 1.25em 1.5em; }
+.default-btn{
+    background-color: transparent;
+    border: none;
+    color: var(--dark-grayish-blue-clr);
+    cursor: pointer;
+    transition: color .2s ease-out;
+}
+.default-btn:hover{ color: white; }
 
 .top-header{
     display: flex;
@@ -46,6 +59,7 @@ img{ max-width: 100%; }
 .logo{
     color: white;
     letter-spacing: .25em;
+    word-spacing: -12px;
     text-transform: uppercase;
     font-size: 1.8rem;
 }
@@ -53,9 +67,6 @@ img{ max-width: 100%; }
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
     width: 1.65em;
 }
 
@@ -65,51 +76,86 @@ img{ max-width: 100%; }
     list-style: none; 
     color: var(--light-grayish-blue-clr);
 }
+.list__item{
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+    padding: .5em 1em; 
+    background-color: var(--very-dark-desaturated-blue-clr);
+    box-sizing: border-box;
+    font-size: .9rem;
+}
 .list__item:first-child{ 
     margin-bottom: 1em; 
     padding-bottom: 1.25em;
     padding-top: 1.25em;
 }
-.list__item{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: .5em 1em;
-    background-color: var(--very-dark-desaturated-blue-clr);
-    box-sizing: border-box;
-    font-size: .9rem;
-}
+.list__item:last-child{ margin-top: 1em; }
 .list__item.--all-bdradius{ border-radius: 5px; }
 .list__item.--top-bdradius{ border-radius: 5px 5px 0 0; }
 .list__item.--bottom-bdradius{ border-radius: 0 0 5px 5px; }
 .list__item.--bd-bottom{ border-bottom: solid 1px rgba(255,255,255, .1); }
 .list__item.--justify-spacebtw{ justify-content: space-between; }
+.list__item.--justify-start{ justify-content: flex-start; }
+.list__item.--justify-center{ justify-content: center; }
 .list__item .todo-list__label{ 
     display: inline-block;
-    padding: 1.25em 0; 
+    padding: 1.15em 0;
+    cursor: pointer;
+    transition: all .2s ease-out;
 }
+.list__item .todo-list__label:hover{ color: white; }
 .todo-list__input{
+    position: relative;
     border: none;
     background-color: transparent;
     color: var(--light-grayish-blue-clr);
 }
+.todo-list__input.--input-newtodo{ 
+    width: 80%; 
+    margin-left: .45em;
+}
+
+.gradient-checkbox{
+    position: relative;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.2);
+    transition: background .2s ease-out;
+}
+.gradient-checkbox:hover{ background: linear-gradient(90deg, hsl(192, 100%, 67%),hsl(280, 87%, 65%)); }
+.gradient-checkbox::before{
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    width: 90%;
+    height: 90%;
+    border-radius: inherit;
+    background: var(--very-dark-desaturated-blue-clr);
+    transition: background .2s ease-out;
+    /* background: linear-gradient(90deg, hsl(192, 100%, 67%),hsl(280, 87%, 65%)); */
+}
+
 .delete-todo-btn{
     height: max-content;
-    background-color: inherit;
-    border: none;
-    cursor: pointer;
     width: 1.35em;
 }
 .items-left-container{
     display: flex;
     align-items: center;
     height: min-content;
+    color: var(--dark-grayish-blue-clr);
 }
 #items-left{
     appearance: textfield;
     width: .5em;
     background-color: transparent;
     border: none;
-    color: var(--light-grayish-blue-clr);
+    color: var(--dark-grayish-blue-clr);
 }
-
+.filter-btn{ padding: 1em; }
+.filter-btn.active{ color: var(--bright-blue-clr); }
