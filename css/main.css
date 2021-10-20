@@ -3,26 +3,28 @@
 :root{
     --bright-blue-clr: hsl(220, 98%, 61%);
     /* Light theme */
-    --very-light-gray-clr: hsl(0, 0%, 98%)
-    --Very-light-grayish-blue-clr: hsl(236, 33%, 92%);
-    --light-grayish-blue-clr: hsl(233, 11%, 84%);
-    --Dark-grayish-blue: hsl(236, 9%, 61%);
-    --Very-dark-grayish-blue-clr: hsl(235, 19%, 35%);
+    --ltheme-very-light-gray-clr: hsl(0, 0%, 98%);
+    --ltheme-very-light-grayish-blue-clr: hsl(236, 33%, 92%);
+    --ltheme-light-grayish-blue-clr: hsl(233, 11%, 84%);
+    --ltheme-dark-grayish-blue: hsl(236, 9%, 61%);
+    --ltheme-very-dark-grayish-blue-clr: hsl(235, 19%, 35%);
     /* Dark theme */
-    --very-dark-blue-clr: hsl(235, 21%, 11%);
-    --very-dark-desaturated-blue-clr: hsl(235, 24%, 19%);
-    --light-grayish-blue-clr: hsl(234, 39%, 85%);
-    --light-grayish-blue-hover-clr: hsl(236, 33%, 92%);
-    --dark-grayish-blue-clr: hsl(234, 11%, 52%);
-    --very-dark-grayish-blue-clr: hsl(233, 14%, 35%);
-    --very-darker-grayish-blue-clr: hsl(237, 14%, 26%);
+    --dtheme-very-dark-blue-clr: hsl(235, 21%, 11%);
+    --dtheme-very-dark-desaturated-blue-clr: hsl(235, 24%, 19%);
+    --dtheme-light-grayish-blue-clr: hsl(234, 39%, 85%);
+    --dtheme-light-grayish-blue-hover-clr: hsl(236, 33%, 92%);
+    --dtheme-dark-grayish-blue-clr: hsl(234, 11%, 52%);
+    --dtheme-very-dark-grayish-blue-clr: hsl(233, 14%, 35%);
+    --dtheme-very-darker-grayish-blue-clr: hsl(237, 14%, 26%);
 }
 
 body{
     font-family: 'Josefin Sans', sans-serif;
     font-size: 18px;
-    background: var(--very-dark-blue-clr) url(../images/bg-mobile-dark.jpg) no-repeat;
+    transition: background .2s ease-out;
 }
+body.dark-theme{ background: var(--dtheme-very-dark-blue-clr) url(../images/bg-mobile-dark.jpg) no-repeat; }
+body.light-theme{ background: var(--ltheme-light-grayish-blue-clr) url(../images/bg-mobile-light.jpg) no-repeat; }
 h1,h2{
     padding: 0;
     margin: 0;
@@ -41,20 +43,27 @@ input[type=checkbox].todo-list__input{
     height: 1px;
     overflow: hidden;
 }
-.container{ padding: 2.25em 1.25em 1.5em; }
+.container{ 
+    /* padding: 2.25em 1.25em 1.5em;  */
+    width: 86%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
 .default-btn{
-    background-color: transparent;
     border: none;
-    color: var(--dark-grayish-blue-clr);
+    background-color: transparent;
     cursor: pointer;
     transition: color .2s ease-out;
 }
-.default-btn:hover{ color: white; }
+.dark-theme .default-btn{ color: var(--dtheme-dark-grayish-blue-clr); }
+.light-theme .default-btn{ color: var(--ltheme-dark-grayish-blue); }
+.dark-theme .default-btn:hover{ color: white; }
 
 .top-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 2.5em 0 2em;
 }
 .logo{
     color: white;
@@ -71,20 +80,22 @@ input[type=checkbox].todo-list__input{
 }
 
 .todo-list{ 
-    padding-top: 0;
+    padding: 0 0 4em;
     margin: 0;
     list-style: none; 
-    color: var(--light-grayish-blue-clr);
 }
+.dark-theme .todo-list{ color: var(--dtheme-light-grayish-blue-clr); }
+.light-theme .todo-list{ color: var(--dtheme-very-dark-blue-clr); }
 .list__item{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center; 
     padding: .5em 1em; 
-    background-color: var(--very-dark-desaturated-blue-clr);
     box-sizing: border-box;
-    font-size: .9rem;
+    font-size: .8rem;
 }
+.dark-theme .list__item{ background-color: var(--dtheme-very-dark-desaturated-blue-clr); }
+.light-theme .list__item{ background-color: white; }
 .list__item:first-child{ 
     margin-bottom: 1em; 
     padding-bottom: 1.25em;
@@ -94,26 +105,32 @@ input[type=checkbox].todo-list__input{
 .list__item.--all-bdradius{ border-radius: 5px; }
 .list__item.--top-bdradius{ border-radius: 5px 5px 0 0; }
 .list__item.--bottom-bdradius{ border-radius: 0 0 5px 5px; }
-.list__item.--bd-bottom{ border-bottom: solid 1px rgba(255,255,255, .1); }
-.list__item.--justify-spacebtw{ justify-content: space-between; }
-.list__item.--justify-start{ justify-content: flex-start; }
-.list__item.--justify-center{ justify-content: center; }
+.list__item.--justify-around{ justify-content: space-around; }
+.dark-theme .list__item.--bd-bottom{ border-bottom: solid 1px rgba(255,255,255, .1); }
+.light-theme .list__item.--bd-bottom{ border-bottom: solid 1px var(--ltheme-light-grayish-blue-clr); }
 .list__item .todo-list__label{ 
     display: inline-block;
     padding: 1.15em 0;
+    width: 200px;
+    max-height: 80px;
+    margin-left: 1em;
+    margin-right: 1em;
     cursor: pointer;
+    overflow-y: auto;
     transition: all .2s ease-out;
 }
-.list__item .todo-list__label:hover{ color: white; }
+.dark-theme .list__item .todo-list__label:hover{ color: white; }
+.light-theme .list__item .todo-list__label{ color: var(--dtheme-very-dark-grayish-blue-clr); }
+.light-theme .list__item .todo-list__label:hover{ color: var(--dtheme-very-dark-grayish-blue-clr); }
 .todo-list__input{
     position: relative;
     border: none;
     background-color: transparent;
-    color: var(--light-grayish-blue-clr);
 }
+.dark-theme .todo-list__input{ color: var(--dtheme-light-grayish-blue-clr); }
 .todo-list__input.--input-newtodo{ 
     width: 80%; 
-    margin-left: .45em;
+    margin-left: 1em;
 }
 
 .gradient-checkbox{
@@ -122,9 +139,11 @@ input[type=checkbox].todo-list__input{
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: rgba(255,255,255,.2);
     transition: background .2s ease-out;
+    cursor: pointer;
 }
+.dark-theme .gradient-checkbox{ background: rgba(255,255,255,.2); }
+.light-theme .gradient-checkbox{ background: var(--ltheme-light-grayish-blue-clr); }
 .gradient-checkbox:hover{ background: linear-gradient(90deg, hsl(192, 100%, 67%),hsl(280, 87%, 65%)); }
 .gradient-checkbox::before{
     content: '';
@@ -135,11 +154,11 @@ input[type=checkbox].todo-list__input{
     width: 90%;
     height: 90%;
     border-radius: inherit;
-    background: var(--very-dark-desaturated-blue-clr);
     transition: background .2s ease-out;
     /* background: linear-gradient(90deg, hsl(192, 100%, 67%),hsl(280, 87%, 65%)); */
 }
-
+.dark-theme .gradient-checkbox::before{ background: var(--dtheme-very-dark-desaturated-blue-clr); }
+.light-theme .gradient-checkbox::before{ background: white; }
 .delete-todo-btn{
     height: max-content;
     width: 1.35em;
@@ -148,14 +167,37 @@ input[type=checkbox].todo-list__input{
     display: flex;
     align-items: center;
     height: min-content;
-    color: var(--dark-grayish-blue-clr);
+    font-size: .85rem;
 }
+.dark-theme .items-left-container{ color: var(--dtheme-dark-grayish-blue-clr); }
+.light-theme .items-left-container{ color: var(--ltheme-dark-grayish-blue); }
 #items-left{
     appearance: textfield;
     width: .5em;
     background-color: transparent;
     border: none;
-    color: var(--dark-grayish-blue-clr);
 }
+.dark-theme #items-left{  color: var(--dtheme-dark-grayish-blue-clr); }
+.light-theme #items-left{ color: var(--ltheme-dark-grayish-blue-clr); }
 .filter-btn{ padding: 1em; }
+.light-theme .filter-btn{ font-weight: 700; }
 .filter-btn.active{ color: var(--bright-blue-clr); }
+
+@media screen and (min-width: 376px) {
+    body.dark-theme{ background: var(--dtheme-very-dark-blue-clr) url(../images/bg-desktop-dark.jpg) repeat-x; }
+    body.light-theme{ background: var(--ltheme-light-grayish-blue-clr) url(../images/bg-desktop-light.jpg) repeat-x; }
+}
+
+@media screen and (min-width: 992px) {
+    .container{
+        width: 50%;
+    }
+    .logo{ font-size: 2rem; }
+    .list__item{ 
+        justify-content: flex-start;
+        font-size: 1rem;
+    }
+    .list__item .todo-list__label{
+        width: 90%;
+    }
+}

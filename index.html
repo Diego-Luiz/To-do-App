@@ -10,7 +10,7 @@
   <script src="js/app.js" defer></script>  
   <title>Frontend Mentor | Todo app</title>
 </head>
-<body>
+<body class="dark-theme">
   <header class="top-header container">
     <h1 class="logo">To do</h1>
     <button class="theme-btn default-btn">
@@ -18,9 +18,9 @@
       <img src="images/icon-sun.svg" alt="" aria-hidden="true">
     </button>
   </header>
-  <main>
-    <ul class="todo-list container">
-      <li class="list__item --all-bdradius --justify-center">
+  <main class="container">
+    <ul class="todo-list">
+      <li class="list__item --all-bdradius">
         <span class="gradient-checkbox" aria-hidden="true"></span>
         <input type="text" placeholder="Create a new todo..." class="todo-list__input --input-newtodo">
       </li>
@@ -72,20 +72,20 @@
       <li class="list__item --bd-bottom">
         <input type="checkbox" value="Complete online Javascript course" id="6" class="todo-list__input">
         <span class="gradient-checkbox" aria-hidden="true"></span>
-        <label for="6" class="todo-list__label">Complete online Javascript course</label>
+        <label for="6" class="todo-list__label">Complete Todo App on Frontend Mentor</label>
         <button class="delete-todo-btn default-btn" type="button">
           <span class="sr-only">Delete this to do</span>
           <img src="images/icon-cross.svg" alt="" aria-hidden="true">
         </button>
       </li>
-      <li class="list__item --bottom-bdradius --justify-spacebtw">
+      <li class="list__item --bottom-bdradius --justify-around">
         <p class="items-left-container">
           <input type="number" id="items-left" value="1" readonly>
           <label for="items-left">items left</label>
         </p>
         <button type="button" class="default-btn">Clear Completed</button>
       </li>
-      <li class="list__item --all-bdradius --justify-center">
+      <li class="list__item --all-bdradius">
         <button type="button" class="default-btn filter-btn active">All</button>
         <button type="button" class="default-btn filter-btn">Active</button>
         <button type="button" class="default-btn filter-btn">Completed</button>
