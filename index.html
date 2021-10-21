@@ -10,7 +10,7 @@
   <script src="js/app.js" defer></script>  
   <title>Frontend Mentor | Todo app</title>
 </head>
-<body class="dark-theme">
+<body class="light-theme">
   <header class="top-header container">
     <h1 class="logo">To do</h1>
     <button class="theme-btn default-btn">
@@ -35,8 +35,8 @@
       </li>
       <li class="list__item --bd-bottom">
         <input type="checkbox" value="Complete online Javascript course" id="2" class="todo-list__input">
-        <span class="gradient-checkbox" aria-hidden="true"></span>
-        <label for="2" class="todo-list__label">Complete online Javascript course</label>
+        <span class="gradient-checkbox --completed" aria-hidden="true"></span>
+        <label for="2" class="todo-list__label --completed">Complete online Javascript course</label>
         <button class="delete-todo-btn default-btn" type="button">
           <span class="sr-only">Delete this to do</span>
           <img src="images/icon-cross.svg" alt="" aria-hidden="true">
@@ -83,20 +83,21 @@
           <input type="number" id="items-left" value="1" readonly>
           <label for="items-left">items left</label>
         </p>
+        <div class="group-btn-filters">
+          <button type="button" class="default-btn filter-btn active">All</button>
+          <button type="button" class="default-btn filter-btn">Active</button>
+          <button type="button" class="default-btn filter-btn">Completed</button>
+        </div>
         <button type="button" class="default-btn">Clear Completed</button>
       </li>
-      <li class="list__item --all-bdradius">
+      <li class="list__item --all-bdradius --group-btn-filters --justify-center">
         <button type="button" class="default-btn filter-btn active">All</button>
         <button type="button" class="default-btn filter-btn">Active</button>
         <button type="button" class="default-btn filter-btn">Completed</button>
       </li>
     </ul>
       
-    
   </main>
-  <!-- <footer>
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </footer> -->
+  
 </body>
 </html>
