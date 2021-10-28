@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
   <meta name="author" content="Diego Luiz">
+  <meta name="keywords" content="to do app, html, css, javascript, js, responsive, frontend, front-end, front end, frontend mentor, challenge">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">    
+  <link rel="stylesheet" href="css/main.css"> 
+  <script src="js/Todo.js"></script>   
   <script src="js/app.js" defer></script>  
   <title>Frontend Mentor | Todo app</title>
 </head>
-<body class="light-theme">
+<body class="dark-theme">
   <header class="top-header container">
     <h1 class="logo">To do</h1>
     <button class="theme-btn default-btn">
@@ -24,7 +26,7 @@
         <span class="gradient-checkbox" aria-hidden="true"></span>
         <input type="text" placeholder="Create a new todo..." class="todo-list__input --input-newtodo">
       </li>
-      <li class="list__item --top-bdradius --bd-bottom">
+      <!-- <li class="list__item --top-bdradius --bd-bottom">
         <input type="checkbox" value="Complete online Javascript course" id="1" class="todo-list__input">
         <span class="gradient-checkbox" aria-hidden="true"></span>
         <label for="1" class="todo-list__label">Complete online Javascript course</label>
@@ -77,20 +79,20 @@
           <span class="sr-only">Delete this to do</span>
           <img src="images/icon-cross.svg" alt="" aria-hidden="true">
         </button>
-      </li>
+      </li> -->
       <li class="list__item --bottom-bdradius --justify-around">
         <p class="items-left-container">
           <input type="number" id="items-left" value="1" readonly>
           <label for="items-left">items left</label>
         </p>
-        <div class="group-btn-filters">
+        <div class="group-btn-filters btns-filter">
           <button type="button" class="default-btn filter-btn active">All</button>
           <button type="button" class="default-btn filter-btn">Active</button>
           <button type="button" class="default-btn filter-btn">Completed</button>
         </div>
         <button type="button" class="default-btn">Clear Completed</button>
       </li>
-      <li class="list__item --all-bdradius --group-btn-filters --justify-center">
+      <li class="list__item --all-bdradius --group-btn-filters btns-filter --justify-center">
         <button type="button" class="default-btn filter-btn active">All</button>
         <button type="button" class="default-btn filter-btn">Active</button>
         <button type="button" class="default-btn filter-btn">Completed</button>

@@ -77,10 +77,14 @@ input[type=checkbox].todo-list__input{
     align-items: center;
     justify-content: center;
     width: 1.65em;
+    opacity: 1;
+    transition: all ease-out .5s;
 }
-
+.theme-btn.--changeTheme{
+    opacity: 0;
+}
 .todo-list{ 
-    padding: 0 0 4em;
+    padding: 0 0 2em;
     margin: 0;
     list-style: none; 
 }
@@ -157,7 +161,7 @@ input[type=checkbox].todo-list__input{
 }
 .dark-theme .gradient-checkbox{ background: rgba(255,255,255,.2); }
 .light-theme .gradient-checkbox{ background: var(--ltheme-light-grayish-blue-clr); }
-.gradient-checkbox:hover,
+.gradient-checkbox:hover:not(:first-child),
 .gradient-checkbox.--completed{ 
     background: linear-gradient(90deg, hsl(192, 100%, 67%),hsl(280, 87%, 65%)); 
 }
