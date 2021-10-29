@@ -1,6 +1,9 @@
 class Database{
   constructor(){
-    localStorage.setItem('id', 0)
+    let id = localStorage.getItem('id')
+    if(id === null){
+      localStorage.setItem('id', 0)
+    }
   }
   getId(){
     return localStorage.getItem('id')
@@ -13,7 +16,8 @@ class Database{
     return {
       id: this.getNextId(),
       content: text,
-      completed: true
+      active: true,
+      completed: false
     }
   }
   addNewTodo(object){
@@ -30,5 +34,14 @@ class Database{
       }
     }
     return todos
+  }
+  deleteTodo(id){
+    console.log('here to delete')
+  }
+  changeStatus(id){
+    const todo = JSON.parse(localStorage.getItem(id))
+    todo.active = !todo.active
+    todo.completed = !todo.completed
+    localStorage.setItem(id, JSON.stringify(todo))
   }
 }
