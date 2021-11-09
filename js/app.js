@@ -3,13 +3,20 @@
     'strict'
     const database = new Database()
     const themeBtn = document.querySelector('.theme-btn')
-    const checkboxInputNewtodo = document.querySelector('.default-box:first-child .gradient-checkbox')
+    const inputNewtodo = document.querySelector('.todo-list__input.--input-newtodo')
     const todoList = document.querySelector('.todo-list')
     const filterButtons = document.querySelectorAll('.btns-filter')
     const clearCompletedBtn = document.querySelector('.clearCompleted-btn')
-    
+    const itemsLeft = document.getElementById('items-left')
+
     todoList.addEventListener('click', manageTodo)
     clearCompletedBtn.addEventListener('click', clearCompletedTodos)
+    clearCompletedBtn.addEventListener('touchstart', teste)
+    inputNewtodo.addEventListener('keyup', addNewTodo)
+
+    function teste(event){
+      console.log('testando: ',event.touches)
+    }
 
     filterButtons.forEach((element)=>{
       element.addEventListener('click', filterTodos)
@@ -19,10 +26,8 @@
     if(themeBtn !== null && themeBtn !== undefined){
       themeBtn.addEventListener('click', changeTheme)
     }
-    if(checkboxInputNewtodo !== null && checkboxInputNewtodo !== undefined){
-      checkboxInputNewtodo.addEventListener('click', addNewTodo)
-    }
     function filterTodos(event){
+      let todos = database.loadTodos()
       clearTodos()
       const filter = event === undefined ? null : event.target
       if(filter !== null){
@@ -35,12 +40,11 @@
         filter.classList.add('active')
       }
       let filterParam = filter !== null ? filter.textContent.toLowerCase() : "all"
-      let todos = database.loadTodos()
-      const itemsLeft = document.getElementById('items-left')
+      
       
       if(filterParam !== "all"){
         todos = todos.filter( element=> {
-          if(filterParam === "active" && element.active === true){
+          if(filterParam === "active" && element.completed === false){
             return element
           }
           else if(filterParam === "completed" && element.completed === true){
@@ -48,15 +52,14 @@
           }
         })
       }
-      itemsLeft.value = todos.length
+      itemsLeft.textContent = todos.length
       for(let item of todos){
         todoList.appendChild(createDOMTodo(item))
       }
       
     }
     function clearTodos(){
-      const inputNewtodo = document.querySelector('.todo-list__input.--input-newtodo')
-      inputNewtodo.textContent = ""
+      inputNewtodo.value = ""
       const children = todoList.children
       Array.from(children).forEach((element)=>{
         element.remove()
@@ -103,6 +106,8 @@
       li.appendChild(span)
       li.appendChild(label)
       li.appendChild(button)
+
+      li.draggable = true
   
       return li
     }
@@ -132,11 +137,13 @@
       }, 150)
     }
 
-    function addNewTodo(){
-      const inputNewtodo = document.querySelector('.todo-list__input.--input-newtodo')
-      const newTodo = database.createTodo(inputNewtodo.value.trim())
-      database.addNewTodo(newTodo)
-      filterTodos()
+    function addNewTodo(event){
+      if(event.keyCode === 13){
+        const newTodo = database.createTodo(inputNewtodo.value.trim())
+        database.addNewTodo(newTodo)
+        todoList.appendChild(createDOMTodo(newTodo))
+        inputNewtodo.value = ""
+      }
     }
     function manageTodo(event){
       const target = event.target || null
@@ -159,8 +166,11 @@
         }
         
         if(flagDelete){
-          database.deleteTodo(id)
-          // filterTodos()
+          const todo = document.getElementById(id).parentNode
+          database.deleteTodos([id])
+          todo.style.animation = "deleteTodoAnimation .5s linear"
+          todo.style.animationFillMode = "forwards"
+          setTimeout(() => todo.remove(), 600)
         }
         else{
           database.changeStatus(id)
@@ -171,7 +181,15 @@
       }
     }
     function clearCompletedTodos(){
-      console.log('hello')
+      let todos = database.loadTodos()
+      todos = todos.filter( element => element.completed)
+      let ids = []
+      for({id} of todos){
+        ids.push(id)
+      }
+      database.deleteTodos(ids)
+      filterTodos()
     }
+
   }
 )()

@@ -16,7 +16,6 @@ class Database{
     return {
       id: this.getNextId(),
       content: text,
-      active: true,
       completed: false
     }
   }
@@ -25,9 +24,9 @@ class Database{
     localStorage.setItem('id', parseInt(this.getId()) + 1) 
   }
   loadTodos(){
-    let listLength = localStorage.length
+    const id = this.getId()
     const todos = []
-    for(let i = 0; i < listLength; i++){
+    for(let i = 0; i < id; i++){
       const item = localStorage.getItem('todo-id-'+i) 
       if(item !== null){
         todos.push(JSON.parse(item))
@@ -35,12 +34,18 @@ class Database{
     }
     return todos
   }
-  deleteTodo(id){
-    console.log('here to delete')
+  deleteTodos(ids){
+    try{
+      ids.forEach(element => {
+        localStorage.removeItem(element)
+      });
+    }
+    catch(e){
+      alert(e)
+    }
   }
   changeStatus(id){
     const todo = JSON.parse(localStorage.getItem(id))
-    todo.active = !todo.active
     todo.completed = !todo.completed
     localStorage.setItem(id, JSON.stringify(todo))
   }
