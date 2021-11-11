@@ -10,13 +10,15 @@ class Database{
   }
   getNextId(){
     let currentId = parseInt(this.getId())
-    return "todo-id-" + currentId++
+    return currentId++
   }
   createTodo(text){
+    const todoId = this.getNextId()
     return {
-      id: this.getNextId(),
+      id:  "todo-id-" + todoId,
       content: text,
-      completed: false
+      completed: false,
+      order: todoId
     }
   }
   addNewTodo(object){
@@ -48,5 +50,18 @@ class Database{
     const todo = JSON.parse(localStorage.getItem(id))
     todo.completed = !todo.completed
     localStorage.setItem(id, JSON.stringify(todo))
+  }
+  getTodo(id){
+    return JSON.parse(localStorage.getItem(id))
+  }
+  changeOrder(idDraggedElement, idTargetElement){
+    const draggedElement = this.getTodo(idDraggedElement)
+    const targetElement = this.getTodo(idTargetElement)
+    let orderDraggedElement = draggedElement.order
+    draggedElement.order = targetElement.order
+    targetElement.order = orderDraggedElement
+
+    localStorage.setItem(draggedElement.id, JSON.stringify(draggedElement))
+    localStorage.setItem(targetElement.id, JSON.stringify(targetElement))
   }
 }

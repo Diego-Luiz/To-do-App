@@ -8,19 +8,17 @@
     const filterButtons = document.querySelectorAll('.btns-filter')
     const clearCompletedBtn = document.querySelector('.clearCompleted-btn')
     const itemsLeft = document.getElementById('items-left')
+    var draggedElementDropzone = null
 
     todoList.addEventListener('click', manageTodo)
     clearCompletedBtn.addEventListener('click', clearCompletedTodos)
-    clearCompletedBtn.addEventListener('touchstart', teste)
+    
     inputNewtodo.addEventListener('keyup', addNewTodo)
 
-    function teste(event){
-      console.log('testando: ',event.touches)
-    }
-
-    filterButtons.forEach((element)=>{
+    filterButtons.forEach( (element) => {
       element.addEventListener('click', filterTodos)
     })
+
     filterTodos()
 
     if(themeBtn !== null && themeBtn !== undefined){
@@ -53,11 +51,14 @@
         })
       }
       itemsLeft.textContent = todos.length
+      todos.sort((a, b) => a.order - b.order)
+
       for(let item of todos){
         todoList.appendChild(createDOMTodo(item))
       }
       
     }
+    
     function clearTodos(){
       inputNewtodo.value = ""
       const children = todoList.children
@@ -66,8 +67,9 @@
       })
     }
     function createDOMTodo(object){
-      let {id, content, completed} = object
-
+      let {id, content, completed, order} = object
+      
+      const div = document.createElement('div')
       const li = document.createElement('li')
       const input = document.createElement('input')
       const span = document.createElement('span')
@@ -75,7 +77,11 @@
       const button = document.createElement('button')
       const buttonSpan = document.createElement('span')
       const buttonImg = document.createElement('img')
-
+      
+      div.id = "order-" + order
+      div.className = "draggable-item"
+      div.draggable = true
+      
       li.className = "default-box"
       input.type = "checkbox"
       input.value = content
@@ -102,13 +108,17 @@
 
       button.appendChild(buttonSpan)
       button.appendChild(buttonImg)
-      li.appendChild(input)
-      li.appendChild(span)
-      li.appendChild(label)
-      li.appendChild(button)
+      div.appendChild(input)
+      div.appendChild(span)
+      div.appendChild(label)
+      div.appendChild(button)
+      li.appendChild(div)
 
-      li.draggable = true
-  
+      div.addEventListener('dragstart', dragStartTodo)
+      li.addEventListener('dragover', dragOverDropzone)
+      li.addEventListener('dragleave', dragLeaveDropzone)
+      li.addEventListener('drop', dragDropDropzone)
+
       return li
     }
     function changeTheme(){
@@ -143,6 +153,7 @@
         database.addNewTodo(newTodo)
         todoList.appendChild(createDOMTodo(newTodo))
         inputNewtodo.value = ""
+        itemsLeft.textContent = parseInt(itemsLeft.textContent) + 1
       }
     }
     function manageTodo(event){
@@ -160,17 +171,18 @@
             label = target.parentNode.parentNode.querySelector('.todo-list__label')
           }
           id = label.for
-          if(!target.classList.contains('gradient-checkbox')){
+          if(target.classList.contains('delete-todo')){
             flagDelete = true
           }
         }
         
         if(flagDelete){
-          const todo = document.getElementById(id).parentNode
+          const todo = document.getElementById(id).parentNode.parentNode
           database.deleteTodos([id])
           todo.style.animation = "deleteTodoAnimation .5s linear"
           todo.style.animationFillMode = "forwards"
           setTimeout(() => todo.remove(), 600)
+          itemsLeft.textContent = parseInt(itemsLeft.textContent) - 1
         }
         else{
           database.changeStatus(id)
@@ -191,5 +203,42 @@
       filterTodos()
     }
 
+    function dragStartTodo(event){
+      const target = event.target
+      event.dataTransfer.setData('Text',target.id)
+      draggedElementDropzone = target.parentNode
+      const draggableItems = document.querySelectorAll('.draggable-item')
+      draggableItems.forEach(element => element.classList.add('not-droppable'))
+    }
+    function dragOverDropzone(event){
+      event.preventDefault()
+      event.target.style.outline = "dashed 2px white"
+      event.target.style.outlineOffset = "-2px"
+    }
+    function dragLeaveDropzone(event){
+      event.target.style.outline = ""
+    }
+    function dragDropDropzone(event){
+      event.preventDefault()
+      let draggedElementId = event.dataTransfer.getData('Text')
+      const draggedElement = document.getElementById(draggedElementId)
+      const dropzone = event.target
+      const dropzoneDraggableItem = dropzone.querySelector('.draggable-item')
+
+      //Replacing node elements
+      dropzone.replaceChild(draggedElement, dropzoneDraggableItem)
+      draggedElementDropzone.appendChild(dropzoneDraggableItem)
+
+      //Changing orders
+      const idDraggedElement = draggedElement.querySelector('.todo-list__input').id
+      const idTargetElement = dropzoneDraggableItem.querySelector('.todo-list__input').id
+      database.changeOrder(idDraggedElement, idTargetElement)
+
+      //Unlocking pointer-events
+      const draggableItems = document.querySelectorAll('.draggable-item')
+      draggableItems.forEach(element => element.classList.remove('not-droppable'))
+
+      dropzone.style.outline = ""
+    }
   }
 )()

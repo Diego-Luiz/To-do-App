@@ -48,6 +48,7 @@ input[type=checkbox].todo-list__input{
     margin: 0 auto;
     box-sizing: border-box;
 }
+.not-droppable{ pointer-events: none; }
 .default-btn{
     border: none;
     background-color: transparent;
@@ -58,6 +59,7 @@ input[type=checkbox].todo-list__input{
 .light-theme .default-btn{ color: var(--ltheme-dark-grayish-blue); }
 .dark-theme .default-btn:hover{ color: white; }
 .light-theme .default-btn:hover{ color: var(--ltheme-very-dark-grayish-blue-clr); }
+
 
 .top-header{
     display: flex;
@@ -93,7 +95,7 @@ input[type=checkbox].todo-list__input{
 }
 .dark-theme .todo-list{ color: var(--dtheme-light-grayish-blue-clr); }
 .light-theme .todo-list{ color: var(--dtheme-very-dark-blue-clr); }
-.default-box{
+.default-box, .default-box div{
     display: flex;
     justify-content: start;
     align-items: center; 
@@ -101,6 +103,8 @@ input[type=checkbox].todo-list__input{
     box-sizing: border-box;
     font-size: .8rem;
 }
+.default-box .draggable-item{ width: 100%; }
+
 .dark-theme .default-box{ background-color: var(--dtheme-very-dark-desaturated-blue-clr); }
 .light-theme .default-box{ background-color: white; }
 .default-box.input-box{ 
@@ -188,7 +192,7 @@ input[type=checkbox].todo-list__input{
 .gradient-checkbox.--completed::before{ background: url(../images/icon-check.svg) center no-repeat; }
 .delete-todo-btn{
     height: max-content;
-    padding: .2em .5em;
+    padding: .3em .8em;
 }
 .items-left-container{
     display: flex;
