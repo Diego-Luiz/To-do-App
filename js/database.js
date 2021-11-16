@@ -62,6 +62,7 @@ class Database{
     const todo = JSON.parse(localStorage.getItem(id))
     todo.completed = !todo.completed
     localStorage.setItem(id, JSON.stringify(todo))
+    return todo.completed
   }
   getTodo(id){
     return JSON.parse(localStorage.getItem(id))

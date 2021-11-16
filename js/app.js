@@ -99,7 +99,7 @@
           itemsLeft.textContent = parseInt(itemsLeft.textContent) - 1
         }
         else{
-          database.changeStatus(id)
+          itemsLeft.textContent = database.changeStatus(id) === true ? parseInt(itemsLeft.textContent) - 1 : parseInt(itemsLeft.textContent) + 1
           const gradient = label.parentNode.querySelector('.gradient-checkbox')
           gradient.classList.toggle('--completed')
           label.classList.toggle('--completed')
@@ -142,7 +142,7 @@
         filter.classList.add('active')
       }
       let filterParam = filter !== null ? filter.textContent.toLowerCase() : "all"
-      
+      let itemsLeftAux = 0
       if(filterParam !== "all"){
         todos = todos.filter( element => {
           if(filterParam === "active" && element.completed === false){
@@ -152,13 +152,15 @@
             return element
           }
         })
+        itemsLeftAux = todos.length
       }
-      itemsLeft.textContent = todos.length
+     
       todos.sort((a, b) => a.order - b.order)
-
       for(let item of todos){
+        if(!item.completed) itemsLeftAux++;
         todoList.appendChild(createDOMTodo(item))
       }
+      itemsLeft.textContent = itemsLeftAux
       
     }
     
