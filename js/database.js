@@ -1,12 +1,24 @@
 class Database{
   constructor(){
     let id = localStorage.getItem('id')
+    let theme = localStorage.getItem('theme')
     if(id === null){
       localStorage.setItem('id', 0)
+    }
+    if(theme === null){
+      localStorage.setItem('theme', "dark-theme")
     }
   }
   getId(){
     return localStorage.getItem('id')
+  }
+  getTheme(){
+    return localStorage.getItem('theme')
+  }
+  changeTheme(){
+    let theme = this.getTheme()
+    let newTheme = theme === "dark-theme" ? "light-theme" : "dark-theme"
+    localStorage.setItem('theme', newTheme)
   }
   getNextId(){
     let currentId = parseInt(this.getId())

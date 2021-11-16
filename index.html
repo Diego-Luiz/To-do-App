@@ -8,14 +8,14 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css"> 
-  <script src="js/Todo.js"></script>   
+  <script src="js/database.js"></script>   
   <script src="js/app.js" defer></script>  
-  <title>Frontend Mentor | Todo app</title>
+  <title>Frontend Mentor | To do app</title>
 </head>
 <body class="dark-theme">
   <header class="top-header container">
     <h1 class="logo">To do</h1>
-    <button class="theme-btn default-btn">
+    <button type="button" class="theme-btn default-btn">
       <span class="sr-only">Change to light theme</span>
       <img src="images/icon-sun.svg" alt="" aria-hidden="true">
     </button>
@@ -30,22 +30,36 @@
 
     <div class="default-box --bottom-bdradius --justify-around">
       <p class="items-left-container">
-        <output id="items-left"></output>
-        <label for="items-left">items left</label>
+        <span id="items-left"></span> items left
       </p>
-      <div class="group-btn-filters btns-filter">
-        <button type="button" class="default-btn filter-btn active">All</button>
-        <button type="button" class="default-btn filter-btn">Active</button>
-        <button type="button" class="default-btn filter-btn">Completed</button>
-      </div>
+      
+      <ul class="group-btn-filters btns-filter">
+        <li>
+          <button type="button" class="default-btn filter-btn active">All</button>
+        </li>
+        <li>
+          <button type="button" class="default-btn filter-btn">Active</button>
+        </li>
+        <li>
+          <button type="button" class="default-btn filter-btn">Completed</button>
+        </li>
+      </ul>
       <button type="button" class="default-btn clearCompleted-btn">Clear Completed</button>
     </div>
 
-    <div class="default-box --all-bdradius --group-btn-filters btns-filter --justify-center --mbottom">
-      <button type="button" class="default-btn filter-btn active">All</button>
-      <button type="button" class="default-btn filter-btn">Active</button>
-      <button type="button" class="default-btn filter-btn">Completed</button>
-    </div>
+    <ul class="default-box --all-bdradius --group-btn-filters btns-filter --justify-center --mbottom">
+      <li>
+        <button type="button" class="default-btn filter-btn active">All</button>
+      </li>
+      <li>
+        <button type="button" class="default-btn filter-btn">Active</button>
+      </li>
+      <li>
+        <button type="button" class="default-btn filter-btn">Completed</button>
+      </li>
+    </ul>
+
+    <p class="infoDragDrop">Drag and drop to reorder list</p>
   </main>
   
 </body>
