@@ -4,11 +4,10 @@
 
 ## Welcome! 👋
 
-Thanks for checking out this front-end coding challenge.
+Thanks for checking out this front-end coding challenge. This is a to do app built based on [Frontend Mentor | Todo app challenge](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW/hub/todo-app-JuyXhS5wa).
 
 ## The challenge 🎯 
-
-The challenge was to build an to do app and get it looking as close to the design as possible.
+The challenge was to build an to do app and get it looking as close to the design as possible. Right below you can see what the challenge proposes and what have been done (✔️) and what have not (❌).
 
 The users should be able to:
 
@@ -20,9 +19,19 @@ The users should be able to:
 - Filter by all/active/complete todos ✔️
 - Clear all completed todos ✔️
 - Toggle light and dark mode ✔️
+- **Bonus**: Drag and drop to reorder items on the list ❌
 
 ## 🛠️ How to run the project 
-Execute the ```index.html``` file or access the website page
+- You can download or clone the project, once you have the files execute the ```index.html``` file.
+- Access the [website page](https://diego-luiz.github.io/To-do-App/).
+
+## About the app
+- The app is using the browser's ```localstorage``` to store all the data, consequently it has a limited capacity of storage.
+- Basically everything is clickable:
+  - Changing theme (dark or light)
+  - Changing the to do status (completed or active)
+  - Button to delete a to do and to clear all completed ones
+- To create a new to do just give the input some text and press ```Enter```
 
 ## Comparision between the design 📜 and app built 
 
