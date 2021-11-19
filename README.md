@@ -4,56 +4,76 @@
 
 ## Welcome! 👋
 
-Thanks for checking out this front-end coding challenge.
+Thanks for checking out this front-end coding challenge. This is a to do app built based on [Frontend Mentor | Todo app challenge](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW/hub/todo-app-JuyXhS5wa).
 
-## The challenge
-
-The challenge was to build an to do app and get it looking as close to the design as possible.
+## The challenge 🎯 
+The challenge was to build an to do app and get it looking as close to the design as possible. Right below you can see what the challenge proposes and what have been done (✔️) and what have not (❌).
 
 The users should be able to:
 
-- View the optimal layout for the app depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Add new todos to the list
-- Mark todos as complete
-- Delete todos from the list
-- Filter by all/active/complete todos
-- Clear all completed todos
-- Toggle light and dark mode
-- **Bonus**: Drag and drop to reorder items on the list
+- View the optimal layout for the app depending on their device's screen size ✔️
+- See hover states for all interactive elements on the page ✔️
+- Add new todos to the list ✔️
+- Mark todos as complete ✔️
+- Delete todos from the list ✔️
+- Filter by all/active/complete todos ✔️
+- Clear all completed todos ✔️
+- Toggle light and dark mode ✔️
+- **Bonus**: Drag and drop to reorder items on the list ❌
 
-## Comparision between the design and app built
+## 🛠️ How to run the project 
+- You can download or clone the project, once you have the files execute the ```index.html``` file.
+- Access the [website page](https://diego-luiz.github.io/To-do-App/).
 
-### Dark mode (Mobile)
- <table>
+## About the app
+- The app is using the browser's ```localstorage``` to store all the data, consequently it has a limited capacity of storage.
+- Basically everything is clickable:
+  - Changing theme (dark or light)
+  - Changing the to do status (completed or active)
+  - Button to delete a to do and to clear all completed ones
+- To create a new to do just give the input some text and press ```Enter```
+
+## Comparision between the design 📜 and app built 
+
+### Dark mode 📱 (Mobile)
+ <table align="center">
   <tr>
-    <td>Mobile design</td>
+    <td>📜 Mobile design</td>
     <td>App built</td>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/51066402/142054177-1d074ebc-6133-46d1-9db2-3d668139490b.jpg" width=300 height=600></td>
-    <td><img src="https://user-images.githubusercontent.com/51066402/142054294-a39f1f86-5a48-4795-a8da-e358c0922c9e.png" width=300 height=600></td>
+    <td><img src="https://user-images.githubusercontent.com/51066402/142657576-96525537-47c8-4aa5-8918-4ac9971a7abe.jpg" width=350 height=700></td>
+    <td><img src="https://user-images.githubusercontent.com/51066402/142657866-6bc60caa-9111-4f8f-a68b-304bc5e929e8.png" width=350 height=700></td>
   </tr>
  </table>
  
-### Light mode (Mobile)
-<table>
+### Light mode 📱 (Mobile)
+<table align="center">
   <tr>
-    <td>Mobile design</td>
-    <td>App built</td>
+    <td>📜 Mobile design</td>
+    <td App built</td>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/51066402/142057359-8590b49e-e1b2-46b4-bce2-a5f9854e3a33.jpg" width=300 height=600></td>
-    <td><img src="https://user-images.githubusercontent.com/51066402/142057459-bf3a2f5a-f2bc-47df-ac14-dfd4d3e771d4.png" width=300 height=600></td>
+    <td><img src="https://user-images.githubusercontent.com/51066402/142057359-8590b49e-e1b2-46b4-bce2-a5f9854e3a33.jpg" width=350 height=700></td>
+    <td><img src="https://user-images.githubusercontent.com/51066402/142658240-127c26a6-35cb-4c31-919a-596fcae040fe.png" width=350 height=700></td>
   </tr>
 </table>
 
-### Dark mode (Desktop)
-#### Design
+### Dark mode 🖥️ (Desktop)
+#### 📜 Design
 ![desktop-design-dark](https://user-images.githubusercontent.com/51066402/142059280-4453664c-1e93-472a-9969-18efce4dd950.jpg)
 #### App built
-![deskdark](https://user-images.githubusercontent.com/51066402/142059764-6c5a9ef0-7af0-4c00-89cd-bd7649345886.png)
+![darkdesk](https://user-images.githubusercontent.com/51066402/142658486-8cfb6128-cf35-4cd1-aeed-ad1829b9bdea.png)
 
+### Light mode 🖥️ (Desktop)
+#### 📜 Design
+![desktop-design-light](https://user-images.githubusercontent.com/51066402/142658686-d98edb05-2705-4098-9f30-8db234f1b47a.jpg)
+#### App built
+![lightdesk](https://user-images.githubusercontent.com/51066402/142658795-93e21c10-8aec-4b02-9ec2-94a6bc63439c.png)
 
+## Related Technologies
+- ``HTML``
+- ``CSS``
+- ``Javascript``
 
 
