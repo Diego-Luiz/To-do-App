@@ -98,24 +98,15 @@ input[type=checkbox].todo-list__input{
 .dark-theme .todo-list{ color: var(--dtheme-light-grayish-blue-clr); }
 .light-theme .todo-list{ color: var(--dtheme-very-dark-blue-clr); }
 
-.default-box, .default-box .draggable-item{
+.default-box{
     display: flex;
     justify-content: start;
     align-items: center; 
+    padding: .5em 1em;
     box-sizing: border-box;
     font-size: .8rem;
 }
-.default-box{ padding: .5em 1em; }
-.default-box .draggable-item{  
-    visibility: visible;
-    opacity: 1;
-    width: 100%; 
-    transition: visibility, opacity .5s ease-in-out;
-}
-.default-box .draggable-item.hide{ 
-    visibility: hidden;
-    opacity: 0;
-}
+
 .dark-theme .default-box{ background-color: var(--dtheme-very-dark-desaturated-blue-clr); }
 .light-theme .default-box{ background-color: white; }
 .default-box.input-box{ 
@@ -147,7 +138,6 @@ input[type=checkbox].todo-list__input{
     overflow-y: auto;
     transition: color .5s ease-out;
 }
-
 .light-theme .default-box .todo-list__label{ color: var(--dtheme-very-dark-grayish-blue-clr); }
 
 .dark-theme .default-box .todo-list__label.--completed{
@@ -229,13 +219,6 @@ input[type=checkbox].todo-list__input{
     font-size: .9rem;
     box-shadow: 0 10px 20px 0 rgba(0,0,0,.1);
 }
-.infoDragDrop{
-    text-align: center;
-    font-size: .9rem;
-    margin: 4em 0;
-}
-.dark-theme .infoDragDrop{ color: var(--dtheme-very-dark-grayish-blue-clr); }
-.light-theme .infoDragDrop{ color: var(--ltheme-dark-grayish-blue); }
 
 @keyframes newTodoAnimation {
     from {
@@ -282,10 +265,7 @@ input[type=checkbox].todo-list__input{
     body.light-theme{ background-size: 100% auto; }
     .container{ width: 55%;}
     .logo{ font-size: 2rem; }
-    .default-box, 
-    .default-box .draggable-item{ 
-        font-size: 1rem; 
-    }
+    .default-box.draggable-item{ font-size: 1rem; }
     .delete-todo-btn{
         opacity: 0;
         visibility: hidden;
@@ -297,10 +277,7 @@ input[type=checkbox].todo-list__input{
     .items-left-container{ font-size: .85rem; }
     .default-box.--group-btn-filters{ display: none; }
     .default-box .group-btn-filters{ display: flex; }
-    .infoDragDrop{ 
-        margin-top: 4em; 
-        font-size: 1rem;
-    }
+    
     /*hover effects */
     .dark-theme .default-btn:hover{ color: white; } 
     .light-theme .default-btn:hover{ color: var(--ltheme-very-dark-grayish-blue-clr); }
@@ -309,7 +286,7 @@ input[type=checkbox].todo-list__input{
     .light-theme .default-box .todo-list__label.--completed:hover{ color: var(--ltheme-light-grayish-blue-clr);}
     .light-theme .default-box .todo-list__label:hover{ color: var(--dtheme-very-dark-grayish-blue-clr); }
     .dark-theme .default-box .todo-list__label:hover{ color: white; }
-    .default-box .draggable-item:hover .delete-todo-btn{
+    .default-box.draggable-item:hover .delete-todo-btn{
         opacity: 1;
         visibility: visible;
     }
