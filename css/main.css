@@ -17,7 +17,7 @@
     --dtheme-very-dark-grayish-blue-clr: hsl(233, 14%, 35%);
     --dtheme-very-darker-grayish-blue-clr: hsl(237, 14%, 26%);
 }
-
+html{ min-height: 100%; }
 body{
     font-family: 'Josefin Sans', sans-serif;
     font-size: 18px;
@@ -306,11 +306,11 @@ input[type=checkbox].todo-list__input{
     .logo{ font-size: 2.8rem; }
     body.dark-theme{ 
         background: var(--dtheme-very-dark-blue-clr) url(../images/bg-desktop-dark-biggerthan1440px.png) repeat-x; 
-        background-size: 100% 40%;
+        background-size: 100% 30%;
     }
     body.light-theme{ 
         background: var(--ltheme-very-light-gray-clr) url(../images/bg-desktop-light-biggerthan1440px.png) repeat-x; 
-        background-size: 100% 40%;
+        background-size: 100% 30%;
     }
     .default-box.filter-box{ 
         box-shadow: 
