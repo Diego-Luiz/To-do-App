@@ -23,7 +23,7 @@ The users should be able to:
 
 ## 🛠️ How to run the project 
 - You can download or clone the project, once you have the files execute the ```index.html``` file.
-- Access the [website page](https://diego-luiz.github.io/To-do-App/).
+- You can access the [website page](https://diego-luiz.github.io/To-do-App/).
 
 ## About the app
 - The app is using the browser's ```localstorage``` to store all the data, consequently it has a limited capacity of storage.
